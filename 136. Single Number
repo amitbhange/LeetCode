@@ -1,0 +1,57 @@
+Question:  
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+Example 1:
+Input: nums = [2,2,1]
+Output: 1
+
+Example 2:
+Input: nums = [4,1,2,1,2]
+Output: 4
+
+
+approach: I firstly sorted the array using sort function,
+ - check if array size is 1 then return the exact element 
+ - triverse through the array and compare to the next element that if it is simalr to the previous if condition fails chatch the number and return 
+ - last condition hek if the last number and second last number match or not match if not match then return the number which is diff.
+
+class Solution {
+    public int singleNumber(int[] nums) {
+      Arrays.sort(nums);
+      int ans=-1;
+      if(nums.length==1){
+          return nums[0];
+      }else {
+      for(int i=0;i<nums.length-1;i+=2){
+          if(nums[i]!=nums[i+1]){
+              ans = nums[i];
+              break;
+          }
+          if(nums[nums.length-2]!=nums[nums.length-1]){
+              ans = nums[nums.length-1];
+          }
+      }
+      }
+      return ans;
+    }
+}
+
+
+
+
+
+another solution for thei problem is :   this is the best and optimal solution for this problem:
+ -we are using the XOR operation on the next number in the array
+ -so that if the number is same then the xor is 0 
+ -else xor remains the unique number as it is;
+class Solution {
+public int singleNumber(int[] nums) {
+    int s = 0;
+    for(int i=0;i<nums.length;i++){
+        s = s^nums[i];
+    }
+    return s;
+
+    }
+}
