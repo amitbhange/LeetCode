@@ -1,0 +1,33 @@
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: true
+
+Example 2:
+
+Input: nums = [1,2,3,4]
+Output: false
+
+
+approach: finding the duplicate emenet which s repeted
+sort the array 
+itrerate over the array to legth -1 
+compare i with i+1
+if find the sam nmber return true else false;
+
+
+class Solution {
+    public boolean containsDuplicate(int[] arr) {
+      Arrays.sort(arr);
+      for(int i=0;i<arr.length-1;i++){
+          if(arr[i] == arr[i+1]){
+              return true;
+          }
+      }
+        return false;
+}
+}
